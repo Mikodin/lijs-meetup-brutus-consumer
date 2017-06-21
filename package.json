@@ -1,0 +1,30 @@
+{
+  "name": "lijs-meetup-brutus-consumer",
+  "version": "1.0.0",
+  "description": "A simple consumer for the Brutus API.  Will read from file system and populate Brutus with 3575 passwords.  Will Also check passwords, to see if they are in the list.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mikodin/lijs-meetup-brutus-consumer.git"
+  },
+  "author": "Mike Alicea",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Mikodin/lijs-meetup-brutus-consumer/issues"
+  },
+  "homepage": "https://github.com/Mikodin/lijs-meetup-brutus-consumer#readme",
+  "dependencies": {
+    "axios": "^0.16.2"
+  },
+  "devDependencies": {
+    "eslint": "^4.0.0",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-jsx-a11y": "^5.0.3",
+    "eslint-plugin-react": "^7.1.0",
+    "nodemon": "^1.11.0"
+  }
+}
