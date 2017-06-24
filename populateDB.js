@@ -19,7 +19,7 @@ async function registerAccount() {
   }
 }
 
-async function addWord(password) {
+async function addPassword(password) {
   if (!password) return;
   try {
     const addedPassword = await axios.post('http://localhost:3000/passwords/',
@@ -52,7 +52,7 @@ async function putPasswordsInDb() {
     console.time('APISave');
 
     const allQueries =
-      await Promise.all(passwordArray.map(password => addWord(password)));
+      await Promise.all(passwordArray.map(password => addPassword(password)));
 
     console.log(`${allQueries.length} words added in:`);
     console.timeEnd('APISave');
