@@ -51,7 +51,7 @@ async function putFilesInDB() {
     const wordArray = await readTextFile();
     console.time('APISave');
     const allQueries = await Promise.all(wordArray.map(word => addWord(word)));
-    console.log(allQueries.length);
+    console.log(`${allQueries.length} words added in:`);
     console.timeEnd('APISave');
     return true;
   } catch (error) {
@@ -72,6 +72,5 @@ async function authenticate() {
 
 authenticate().then((res) => {
   token = `JWT ${res.data.token}`;
-  putFilesInDB()
-    .then(data => console.log(`All Done ${data}`));
+  putFilesInDB();
 });
