@@ -19,17 +19,17 @@ async function registerAccount() {
   }
 }
 
-async function addWord(word) {
-  if (!word) return;
+async function addWord(password) {
+  if (!password) return;
   try {
-    const addedWord = await axios.post('http://localhost:3000/words/',
-      { word }, {
+    const addedPassword = await axios.post('http://localhost:3000/passwords/',
+      { password }, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: token,
         },
       });
-    return addedWord;
+    return addedPassword;
   } catch (error) {
     console.error(error);
   }
@@ -40,17 +40,20 @@ function readTextFile() {
     fs.readFile('./data/Top3575-probable.txt', 'utf8',
       (err, data) => {
         if (err) reject(err);
-        const words = data.split(/\r?\n/);
-        resolve(words);
+        const passwords = data.split(/\r?\n/);
+        resolve(passwords);
       });
   });
 }
 
-async function putFilesInDB() {
+async function putPasswordsInDb() {
   try {
-    const wordArray = await readTextFile();
+    const passwordArray = await readTextFile();
     console.time('APISave');
-    const allQueries = await Promise.all(wordArray.map(word => addWord(word)));
+
+    const allQueries =
+      await Promise.all(passwordArray.map(password => addWord(password)));
+
     console.log(`${allQueries.length} words added in:`);
     console.timeEnd('APISave');
     return true;
@@ -72,5 +75,5 @@ async function authenticate() {
 
 authenticate().then((res) => {
   token = `JWT ${res.data.token}`;
-  putFilesInDB();
+  putPasswordsInDb();
 });
