@@ -6,6 +6,7 @@
     "rules": {
         "consistent-return": 0,
         "func-names": 0,
-        "curly": 0
+        "curly": 0,
+        "no-use-before-define": "off"
     }
 }
